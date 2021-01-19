@@ -57,4 +57,6 @@ if (BUILD_GUI_DEPS)
         LIBRARY DESTINATION ${lib_folder})
 endif()
 set_property(TARGET easylogging APPEND PROPERTY COMPILE_FLAGS "-fPIC")
-
+if(CMAKE_SYSTEM_NAME MATCHES "NetBSD")
+	set_property(TARGET easylogging APPEND_STRING PROPERTY COMPILE_FLAGS " -DELPP_FEATURE_CRASH_LOG")
+endif()
